@@ -3,7 +3,21 @@ public class employeeWage {
 	private static final int fullTime = 1;
 	private static final int partTime = 2;
 
-	private static int employeeMonthlyWage( int wagePerHour, int fullDayHour, int dayPerMonth, int totalHours ) {
+	private static String company;
+	private static int wagePerHour;
+	private static int fullDayHour;
+	private static int totalHours;
+	private static int dayPerMonth;
+
+	employeeWage( String company, int wagePerHour, int fullDayHour, int totalHours, int dayPerMonth) {
+		this.company=company;
+		this.wagePerHour = wagePerHour;
+		this.fullDayHour = fullDayHour;
+		this.totalHours = totalHours;
+		this.dayPerMonth = dayPerMonth;
+	}
+
+	private static void employeeMonthlyWage() {
 		//variable
 		int dailyWage;
 		int dailyHours;
@@ -30,10 +44,13 @@ public class employeeWage {
 			dailyWage = wagePerHour * dailyHours;
 			monthlyWage += dailyWage;
       }
-		return monthlyWage;
+		System.out.println("Monthly Wage of "+company+" is: "+monthlyWage);
 	}
 
 	public static void main(String args[]){
-		System.out.println("Employee monthly wage is "+employeeMonthlyWage(20, 8, 20, 100));
+		employeeWage company1 = new employeeWage("Jio", 24, 8, 120, 20);
+		company1.employeeMonthlyWage();
+		employeeWage company2 = new employeeWage("Blab", 20, 8, 100, 20);
+		company2.employeeMonthlyWage();  
 	}
 }

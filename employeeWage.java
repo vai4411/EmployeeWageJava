@@ -1,5 +1,6 @@
 public class employeeWage {
 	public static void main(String args[]){
+
 		//constant
 		final int fullTime=1;
 		//computation

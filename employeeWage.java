@@ -1,12 +1,9 @@
 public class employeeWage {
-	public static void main(String args[]){
-		//constant
-		final int fullTime = 1;
-		final int partTime = 2;
-		final int wagePerHour = 20;
-		final int fullDayHour = 8;
-		final int dayPerMonth = 20;
-		final int totalHours = 100;
+
+	private static final int fullTime = 1;
+	private static final int partTime = 2;
+
+	private static int employeeMonthlyWage( int wagePerHour, int fullDayHour, int dayPerMonth, int totalHours ) {
 		//variable
 		int dailyWage;
 		int dailyHours;
@@ -32,7 +29,11 @@ public class employeeWage {
 			day++;
 			dailyWage = wagePerHour * dailyHours;
 			monthlyWage += dailyWage;
-		}
-		System.out.println("Employee monthly wage is "+monthlyWage+ " : "+hours+" : "+day);
+      }
+		return monthlyWage;
 	}
-} 
+
+	public static void main(String args[]){
+		System.out.println("Employee monthly wage is "+employeeMonthlyWage(20, 8, 20, 100));
+	}
+}

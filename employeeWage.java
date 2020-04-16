@@ -9,13 +9,18 @@ public class employeeWage {
 		int dailyWage;
 		int dailyHours;
 		//computation
-		double empCheck = Math.floor(Math.random() * 10) % 3;
-		if ( empCheck == fullTime )
-			dailyHours = fullDayHour;
-		else if ( empCheck == partTime )
-			dailyHours = 0;
-		else
-			dailyHours = fullDayHour / 2;
+		int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+		switch (empCheck) {
+			case fullTime:
+				dailyHours = fullDayHour;
+				break;
+			case partTime:
+				dailyHours = fullDayHour / 2;
+				break;
+			default:
+				dailyHours = 0;
+				break;
+		}
 		System.out.println("Employee daily wage is "+(wagePerHour * dailyHours));
 	}
 } 

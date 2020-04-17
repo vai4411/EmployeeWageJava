@@ -1,13 +1,16 @@
+import java.util.*;
 public class employeeWage {
 
 	private static final int fullTime = 1;
 	private static final int partTime = 2;
 
+	//variable
 	private static String company;
 	private static int wagePerHour;
 	private static int fullDayHour;
 	private static int totalHours;
 	private static int dayPerMonth;
+	private static int dailyWage, dailyHours, monthlyWage, hours, day;
 
 	employeeWage( String company, int wagePerHour, int fullDayHour, int totalHours, int dayPerMonth) {
 		this.company=company;
@@ -17,13 +20,8 @@ public class employeeWage {
 		this.dayPerMonth = dayPerMonth;
 	}
 
-	private static void employeeMonthlyWage() {
-		//variable
-		int dailyWage;
-		int dailyHours;
-		int monthlyWage = 0;
-		int hours = 0;
-		int day = 0;
+	private static int employeeMonthlyWage() {
+		int dailyWage = 0, dailyHours = 0, monthlyWage = 0, hours = 0, day = 0;
 		//computation
 		while ( hours <= totalHours && day <= dayPerMonth )
 		{
@@ -44,13 +42,16 @@ public class employeeWage {
 			dailyWage = wagePerHour * dailyHours;
 			monthlyWage += dailyWage;
       }
-		System.out.println("Monthly Wage of "+company+" is: "+monthlyWage);
+		return monthlyWage;
 	}
 
 	public static void main(String args[]){
+		Map<String, Integer> company = new HashMap<>();
 		employeeWage company1 = new employeeWage("Jio", 24, 8, 120, 20);
-		company1.employeeMonthlyWage();
+		company.put("Jio",company1.employeeMonthlyWage());
 		employeeWage company2 = new employeeWage("Blab", 20, 8, 100, 20);
-		company2.employeeMonthlyWage();  
+		company.put("Blab",company2.employeeMonthlyWage());
+		System.out.println("Jio : "+company.get("Jio"));
+		System.out.println("Blab : "+company.get("Blab"));  
 	}
 }

@@ -1,27 +1,27 @@
 import java.util.*;
-public class employeeWage {
-
+class ComputeEmployeeWage {
+	//constant
 	private static final int fullTime = 1;
 	private static final int partTime = 2;
-
 	//variable
 	private static String company;
 	private static int wagePerHour;
-	private static int fullDayHour;
 	private static int totalHours;
 	private static int dayPerMonth;
-	private static int dailyWage, dailyHours, monthlyWage, hours, day;
 
-	employeeWage( String company, int wagePerHour, int fullDayHour, int totalHours, int dayPerMonth) {
+	ComputeEmployeeWage( String company, int wagePerHour, int totalHours, int dayPerMonth) {
 		this.company=company;
 		this.wagePerHour = wagePerHour;
-		this.fullDayHour = fullDayHour;
 		this.totalHours = totalHours;
 		this.dayPerMonth = dayPerMonth;
 	}
 
-	private static int employeeMonthlyWage() {
-		int dailyWage = 0, dailyHours = 0, monthlyWage = 0, hours = 0, day = 0;
+	public String getCompany() {
+		return this.company;
+	}
+
+	public static int employeeMonthlyWage() {
+		int dailyWage = 0, dailyHours = 0, monthlyWage = 0, hours = 0, day = 0, fullDayHour = 8;
 		//computation
 		while ( hours <= totalHours && day <= dayPerMonth )
 		{
@@ -44,14 +44,16 @@ public class employeeWage {
       }
 		return monthlyWage;
 	}
+}
+
+public class employeeWage {
+
+	public static ComputeEmployeeWage companyWage[] = new ComputeEmployeeWage[2];
 
 	public static void main(String args[]){
-		Map<String, Integer> company = new HashMap<>();
-		employeeWage company1 = new employeeWage("Jio", 24, 8, 120, 20);
-		company.put("Jio",company1.employeeMonthlyWage());
-		employeeWage company2 = new employeeWage("Blab", 20, 8, 100, 20);
-		company.put("Blab",company2.employeeMonthlyWage());
-		System.out.println("Jio : "+company.get("Jio"));
-		System.out.println("Blab : "+company.get("Blab"));  
+		companyWage[0] = new ComputeEmployeeWage("Jio", 24, 120, 20);
+		System.out.println(companyWage[0].getCompany()+" : "+companyWage[0].employeeMonthlyWage());
+		companyWage[1] = new ComputeEmployeeWage("Blab", 20, 100, 20);
+		System.out.println(companyWage[1].getCompany()+" : "+companyWage[0].employeeMonthlyWage());
 	}
 }

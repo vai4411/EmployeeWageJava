@@ -48,12 +48,13 @@ class ComputeEmployeeWage {
 
 public class employeeWage {
 
-	public static ComputeEmployeeWage companyWage[] = new ComputeEmployeeWage[2];
+	public static ArrayList <Integer> company = new ArrayList <Integer>();
 
 	public static void main(String args[]){
-		companyWage[0] = new ComputeEmployeeWage("Jio", 24, 120, 20);
-		System.out.println(companyWage[0].getCompany()+" : "+companyWage[0].employeeMonthlyWage());
-		companyWage[1] = new ComputeEmployeeWage("Blab", 20, 100, 20);
-		System.out.println(companyWage[1].getCompany()+" : "+companyWage[0].employeeMonthlyWage());
+		ComputeEmployeeWage company1 = new ComputeEmployeeWage("Jio", 24, 120, 20);
+		ComputeEmployeeWage company2 = new ComputeEmployeeWage("Blab", 20, 100, 20);
+		company.add(company1.employeeMonthlyWage());
+		company.add(company2.employeeMonthlyWage());
+		System.out.println(company);
 	}
 }

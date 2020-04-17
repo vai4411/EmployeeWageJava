@@ -10,8 +10,9 @@ class ComputeEmployeeWage {
 	private static int wagePerHour;
 	private static int totalHours;
 	private static int dayPerMonth;
-	private static int dailyWage;
-	private static int entry;
+	private static int dailyWage = 0;
+	private static int entry = 0;
+	private static int total = 0;
 
 	public static HashMap<Integer, Integer> companyWage = new HashMap<>();
 	public static ArrayList <Integer> wagePerCompany = new ArrayList <>();
@@ -33,7 +34,7 @@ class ComputeEmployeeWage {
 	}
 
 	public static int employeeMonthlyWage() {
-		int dailyWage = 0, dailyHours = 0, monthlyWage = 0, hours = 0, day = 0, fullDayHour = 8;
+		int dailyHours = 0, monthlyWage = 0, hours = 0, day = 0;
 		//computation
 		while ( hours <= totalHours && day <= dayPerMonth )
 		{
@@ -75,15 +76,21 @@ class ComputeEmployeeWage {
 		System.out.println(wagePerCompany);
 	}
 
+	public static int totalWage() {
+		for (int i: companyWage.keySet()) {
+			total += companyWage.get(i);
+		}
+		return total;
+	}
 }
 
 public class employeeWage {
-
 	public static void main(String args[]){
 		ComputeEmployeeWage company1 = new ComputeEmployeeWage("Jio", 24, 120, 20);
 		company1.dailyWageAndMonthlyWage();
 		ComputeEmployeeWage company2 = new ComputeEmployeeWage("Blab", 20, 100, 20);
 		company2.dailyWageAndMonthlyWage();
 		company2.printWage();
+		System.out.println("Total Wage Of Company is: "+company2.totalWage());
 	}
 }

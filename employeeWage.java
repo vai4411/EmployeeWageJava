@@ -11,21 +11,17 @@ class ComputeEmployeeWage {
 	private static int totalHours;
 	private static int dayPerMonth;
 	private static int dailyWage = 0;
-	private static int entry = 0;
 	private static int total = 0;
 
 	public static HashMap<Integer, Integer> companyWage = new HashMap<>();
 	public static ArrayList <Integer> wagePerCompany = new ArrayList <>();
+	public static HashMap<String, Integer> companyMonthlyWage = new HashMap<>();
 
 	ComputeEmployeeWage( String company, int wagePerHour, int totalHours, int dayPerMonth) {
 		this.company=company;
 		this.wagePerHour = wagePerHour;
 		this.totalHours = totalHours;
 		this.dayPerMonth = dayPerMonth;
-	}
-
-	public String getCompany() {
-		return this.company;
 	}
 
 	public static int employeeDailyWage() {
@@ -60,7 +56,6 @@ class ComputeEmployeeWage {
 
 	public static void dailyWageAndMonthlyWage() {
 		companyWage.put(employeeDailyWage(), employeeMonthlyWage());
-		entry++;
 	}
 
 	public static void printWage() {
@@ -76,21 +71,22 @@ class ComputeEmployeeWage {
 		System.out.println(wagePerCompany);
 	}
 
-	public static int totalWage() {
-		for (int i: companyWage.keySet()) {
-			total += companyWage.get(i);
-		}
-		return total;
+	public static void putTotalWage() {
+		companyMonthlyWage.put(company, employeeMonthlyWage());
+	}
+
+	public static void getTotalWage() {
+		for (String i: companyMonthlyWage.keySet())
+			System.out.println(i+" : "+companyMonthlyWage.get(i));
 	}
 }
 
 public class employeeWage {
 	public static void main(String args[]){
 		ComputeEmployeeWage company1 = new ComputeEmployeeWage("Jio", 24, 120, 20);
-		company1.dailyWageAndMonthlyWage();
+		company1.putTotalWage();
 		ComputeEmployeeWage company2 = new ComputeEmployeeWage("Blab", 20, 100, 20);
-		company2.dailyWageAndMonthlyWage();
-		company2.printWage();
-		System.out.println("Total Wage Of Company is: "+company2.totalWage());
+		company2.putTotalWage();
+		company2.getTotalWage();
 	}
 }

@@ -75,9 +75,8 @@ class ComputeEmployeeWage {
 		companyMonthlyWage.put(company, employeeMonthlyWage());
 	}
 
-	public static void getTotalWage() {
-		for (String i: companyMonthlyWage.keySet())
-			System.out.println(i+" : "+companyMonthlyWage.get(i));
+	public static void getTotalWage(String company) {
+		System.out.println(company+" : "+companyMonthlyWage.get(company));
 	}
 }
 
@@ -87,6 +86,6 @@ public class employeeWage {
 		company1.putTotalWage();
 		ComputeEmployeeWage company2 = new ComputeEmployeeWage("Blab", 20, 100, 20);
 		company2.putTotalWage();
-		company2.getTotalWage();
+		company2.getTotalWage("Jio");
 	}
 }
